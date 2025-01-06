@@ -19,5 +19,5 @@ export default {
     singleQuote: false,
     jsxSingleQuote: false,
     trailingComma: "all",
-    singleAttributePerLine: true,
+    singleAttributePerLine: false,
 };
