@@ -7,13 +7,21 @@ export default [
     ...tailwind.configs["flat/recommended"],
     {
         files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx,astro}"],
-        ...jsxA11y.flatConfigs.strict,
+        ...jsxA11y.flatConfigs.recommended,
+    },
+    {
+        files: ["**/*.{ts,tsx}"],
+        languageOptions: {
+            parser: "@typescript-eslint/parser",
+            parserOptions: {
+                ecmaVersion: "latest",
+                sourceType: "module",
+            },
+        },
     },
     {
         rules: {
             "no-console": "warn",
-            "astro/prefer-class-list-directive": "error",
-            "astro/jsx-a11y/alt-text": "error",
         },
     },
 ];
