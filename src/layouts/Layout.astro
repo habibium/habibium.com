@@ -1,3 +1,9 @@
+---
+import "@/styles/global.css";
+import Header from "../components/Header.astro";
+import Identity from "../components/Identity.astro";
+---
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -11,7 +17,9 @@
         <link rel="manifest" href="/site.webmanifest" />
         <title>Habibium</title>
     </head>
-    <body>
+    <body class="bg-bg text-text">
+        <Identity />
+        <Header />
         <slot />
     </body>
 </html>

@@ -1,0 +1,56 @@
+<button id="theme-toggle" class="hover:bg-muted/20 rounded-lg bg-card p-2 transition-colors" aria-label="Toggle theme">
+    <!-- Sun icon for dark mode -->
+    <svg id="sun-icon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+        ></path>
+    </svg>
+    <!-- Moon icon for light mode -->
+    <svg id="moon-icon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+    </svg>
+</button>
+
+<script>
+    import { initTheme, toggleTheme } from "@/utils/theme";
+
+    // Initialize theme when the script loads
+    initTheme();
+
+    // Setup button click handler
+    const button = document.getElementById("theme-toggle");
+    button?.addEventListener("click", toggleTheme);
+
+    // Function to update icon visibility
+    const updateIcons = () => {
+        const theme = document.documentElement.getAttribute("data-theme");
+        const sunIcon = document.getElementById("sun-icon");
+        const moonIcon = document.getElementById("moon-icon");
+
+        if (theme === "dark") {
+            sunIcon?.classList.remove("hidden");
+            moonIcon?.classList.add("hidden");
+        } else {
+            sunIcon?.classList.add("hidden");
+            moonIcon?.classList.remove("hidden");
+        }
+    };
+
+    // Update icons initially and when theme changes
+    updateIcons();
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === "data-theme") {
+                updateIcons();
+            }
+        });
+    });
+    observer.observe(document.documentElement, { attributes: true });
+</script>
