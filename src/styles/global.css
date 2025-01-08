@@ -1,16 +1,20 @@
-:root[data-theme="light"] {
-    --text: hsl(240, 6%, 3%);
-    --bg: hsl(216, 24%, 96%);
-    --primary: hsl(217, 100%, 52%);
-    --hyperlink: hsl(211, 100%, 41%);
-    --muted: hsl(214, 3%, 41%);
-    --card: hsl(0, 0%, 100%);
-}
-
-:root[data-theme="dark"] {
+:root {
     --text: hsl(214, 14%, 90%);
     --bg: hsl(240, 2%, 11%);
+    --primary: hsl(217, 100%, 52%);
+    --secondary: hsl(217.5deg 5.33% 70.59%);
     --hyperlink: hsl(212, 100%, 68%);
-    --muted: hsl(218, 5%, 71%);
     --card: hsl(200, 4%, 15%);
+    --hover-overlay: hsl(0deg 0% 100% / 10%);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --text: hsl(240, 6%, 3%);
+        --bg: hsl(216, 24%, 96%);
+        --hyperlink: hsl(211, 100%, 41%);
+        --secondary: hsl(214.29deg 3.35% 40.98%);
+        --card: hsl(0, 0%, 100%);
+        --hover-overlay: hsl(0deg 0% 0% / 5%);
+    }
 }
