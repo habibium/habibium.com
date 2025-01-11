@@ -1,20 +1,43 @@
 :root {
-    --text: hsl(214, 14%, 90%);
-    --bg: hsl(240, 2%, 11%);
-    --primary: hsl(217, 100%, 52%);
-    --secondary: hsl(217.5deg 5.33% 70.59%);
-    --hyperlink: hsl(212, 100%, 68%);
-    --card: hsl(200, 4%, 15%);
-    --hover-overlay: hsl(0deg 0% 100% / 10%);
+    --accent: #0866ff;
+    --primary-text: #e2e5e9;
+    --secondary-text: #b0b3b8;
+    --blue-link: #5aa7ff;
+
+    --primary-button-text: #fff;
+    --primary-button-background: var(--accent);
+    --primary-deemphasized-button-text: #75b6ff;
+    --primary-deemphasized-button-background: #1d85fc33;
+    --secondary-button-text: #e8eaee;
+    --secondary-button-background: #ffffff1a;
+
+    --web-wash: #1c1c1d;
+    --comment-background: #333334;
+    --card-background: #252728;
+
+    --hover-overlay: #ffffff1a;
+    --divider: #65686c;
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --text: hsl(240, 6%, 3%);
-        --bg: hsl(216, 24%, 96%);
-        --hyperlink: hsl(211, 100%, 41%);
-        --secondary: hsl(214.29deg 3.35% 40.98%);
-        --card: hsl(0, 0%, 100%);
-        --hover-overlay: hsl(0deg 0% 0% / 5%);
+        --accent: #0866ff;
+        --primary-text: #080809;
+        --secondary-text: #65686c;
+        --blue-link: #0064d1;
+
+        --primary-button-text: #fff;
+        --primary-button-background: var(--accent);
+        --primary-deemphasized-button-text: #0064d1;
+        --primary-deemphasized-button-background: #ebf5ff;
+        --secondary-button-text: #080809;
+        --secondary-button-background: #e2e5e9;
+
+        --web-wash: #f2f4f7;
+        --comment-background: #f0f2f5;
+        --card-background: #fff;
+
+        --hover-overlay: #0000000d;
+        --divider: #d0d3d7;
     }
 }
