@@ -8,7 +8,7 @@
         "preview": "astro preview --host",
         "astro": "astro",
         "format": "prettier --write .",
-        "lint": "eslint . --ext .astro,.js,.ts"
+        "lint": "eslint"
     },
     "dependencies": {
         "@astrojs/tailwind": "^5.1.4",
