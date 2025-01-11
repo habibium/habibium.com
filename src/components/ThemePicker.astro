@@ -4,27 +4,45 @@ const options = [
     { value: "dark", label: "Dark" },
     { value: "system", label: "System" },
 ];
+const defaultTheme = "system";
 ---
 
-<div class="relative flex max-w-96 items-center gap-1 p-2">
-    <p class="text-sm">Theme:</p>
-    {
-        options.map((o) => (
-            <>
-                <input class="max-w-0" name="theme" type="radio" id={o.value} />
-                <label
-                    class="flex h-6 cursor-pointer items-center justify-center rounded-18px px-3 text-xs font-medium text-secondary-text transition-colors hover:bg-hover-overlay"
-                    for={o.value}>
-                    {o.label}
-                </label>
-            </>
-        ))
-    }
-</div>
+<fieldset class="relative flex max-w-96 items-center gap-2 p-2">
+    <legend class="contents">
+        <span class="text-sm">Theme:</span>
+    </legend>
+    <div class="flex gap-1">
+        {
+            options.map((o) => (
+                <>
+                    <input
+                        class="sr-only"
+                        name="theme"
+                        type="radio"
+                        id={o.value}
+                        value={o.value}
+                        checked={defaultTheme === o.value}
+                    />
+                    <label
+                        class="flex h-6 cursor-pointer items-center justify-center rounded-18px px-3 text-xs font-medium text-secondary-text transition-all hover:bg-hover-overlay"
+                        for={o.value}>
+                        {o.label}
+                    </label>
+                </>
+            ))
+        }
+    </div>
+</fieldset>
 
 <style>
     input:checked + label {
         background-color: var(--primary-deemphasized-button-background);
         color: var(--primary-deemphasized-button-text);
+        font-weight: bold;
+    }
+
+    input:focus-visible + label {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
     }
 </style>
