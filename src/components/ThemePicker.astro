@@ -1,29 +1,30 @@
-<select
-    id="theme-select"
-    class="hover:bg-muted/20 cursor-pointer rounded-lg bg-card p-2 transition-colors"
-    aria-label="Select theme">
-    <option value="system">System</option>
-    <option value="light">Light</option>
-    <option value="dark">Dark</option>
-</select>
+---
+const options = [
+    { value: "light", label: "Light" },
+    { value: "dark", label: "Dark" },
+    { value: "system", label: "System" },
+];
+---
 
-<script>
-    import { initTheme, setTheme } from "@/utils/theme";
-
-    // Initialize theme when the script loads
-    initTheme();
-
-    // Setup select change handler
-    const select = document.getElementById("theme-select") as HTMLSelectElement;
-    if (select) {
-        // Set initial value
-        select.value = localStorage.getItem("theme") || "system";
-
-        // Handle changes
-        select.addEventListener("change", (e) => {
-            const newTheme = (e.target as HTMLSelectElement).value;
-            console.log(newTheme);
-            setTheme(newTheme);
-        });
+<div class="relative flex max-w-96 items-center gap-1 p-2">
+    <p class="text-sm">Theme:</p>
+    {
+        options.map((o) => (
+            <>
+                <input class="max-w-0" name="theme" type="radio" id={o.value} />
+                <label
+                    class="flex h-6 cursor-pointer items-center justify-center rounded-18px px-3 text-xs font-medium text-secondary-text transition-colors hover:bg-hover-overlay"
+                    for={o.value}>
+                    {o.label}
+                </label>
+            </>
+        ))
     }
-</script>
+</div>
+
+<style>
+    input:checked + label {
+        background-color: var(--primary-deemphasized-button-background);
+        color: var(--primary-deemphasized-button-text);
+    }
+</style>

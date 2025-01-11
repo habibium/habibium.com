@@ -64,6 +64,9 @@ export default {
                 "hover-overlay": "var(--hover-overlay)",
                 divider: "var(--divider)",
             },
+            borderRadius: {
+                "18px": "1.125rem",
+            },
         },
     },
     plugins: [],
