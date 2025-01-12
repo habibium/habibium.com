@@ -1,3 +1,8 @@
+---
+import Footer from "@/components/Footer.astro";
+import "@/styles/global.css";
+---
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -11,7 +16,7 @@
         <link rel="manifest" href="/site.webmanifest" />
         <title>Habibium</title>
     </head>
-    <body>
-        <slot />
+    <body class="bg-web-wash text-primary-text">
+        <Footer />
     </body>
 </html>

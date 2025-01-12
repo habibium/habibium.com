@@ -1,6 +1,7 @@
 import eslintPluginAstro from "eslint-plugin-astro";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import tailwind from "eslint-plugin-tailwindcss";
+import tsParser from "@typescript-eslint/parser";
 
 export default [
     ...eslintPluginAstro.configs.recommended,
@@ -12,11 +13,7 @@ export default [
     {
         files: ["**/*.{ts,tsx}"],
         languageOptions: {
-            parser: "@typescript-eslint/parser",
-            parserOptions: {
-                ecmaVersion: "latest",
-                sourceType: "module",
-            },
+            parser: tsParser,
         },
     },
     {

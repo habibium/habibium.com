@@ -1,20 +1,92 @@
-/* Default (Light) */
 :root {
-    --text: hsl(240, 6%, 3%);
-    --background: hsl(216, 24%, 96%);
-    --primary: hsl(217, 100%, 52%);
-    --hyperlink: hsl(211, 100%, 41%);
-    --muted: hsl(214, 3%, 41%);
-    --card: hsl(0, 0%, 100%);
+    --accent: #0866ff;
+    --primary-text: #e2e5e9;
+    --secondary-text: #b0b3b8;
+    --blue-link: #5aa7ff;
+
+    --primary-button-text: #fff;
+    --primary-button-background: var(--accent);
+    --primary-deemphasized-button-text: #75b6ff;
+    --primary-deemphasized-button-background: #1d85fc33;
+    --secondary-button-text: #e8eaee;
+    --secondary-button-background: #ffffff1a;
+
+    --web-wash: #1c1c1d;
+    --comment-background: #333334;
+    --card-background: #252728;
+
+    --hover-overlay: #ffffff1a;
+    --divider: #65686c;
 }
 
-/* Dark */
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
     :root {
-        --text: hsl(214, 14%, 90%);
-        --background: hsl(240, 2%, 11%);
-        --hyperlink: hsl(212, 100%, 68%);
-        --muted: hsl(218, 5%, 71%);
-        --card: hsl(200, 4%, 15%);
+        --accent: #0866ff;
+        --primary-text: #080809;
+        --secondary-text: #65686c;
+        --blue-link: #0064d1;
+
+        --primary-button-text: #fff;
+        --primary-button-background: var(--accent);
+        --primary-deemphasized-button-text: #0064d1;
+        --primary-deemphasized-button-background: #ebf5ff;
+        --secondary-button-text: #080809;
+        --secondary-button-background: #e2e5e9;
+
+        --web-wash: #f2f4f7;
+        --comment-background: #f0f2f5;
+        --card-background: #fff;
+
+        --hover-overlay: #0000000d;
+        --divider: #d0d3d7;
     }
+}
+
+:root[data-theme="dark"] {
+    --accent: #0866ff;
+    --primary-text: #e2e5e9;
+    --secondary-text: #b0b3b8;
+    --blue-link: #5aa7ff;
+
+    --primary-button-text: #fff;
+    --primary-button-background: var(--accent);
+    --primary-deemphasized-button-text: #75b6ff;
+    --primary-deemphasized-button-background: #1d85fc33;
+    --secondary-button-text: #e8eaee;
+    --secondary-button-background: #ffffff1a;
+
+    --web-wash: #1c1c1d;
+    --comment-background: #333334;
+    --card-background: #252728;
+
+    --hover-overlay: #ffffff1a;
+    --divider: #65686c;
+}
+
+:root[data-theme="light"] {
+    --accent: #0866ff;
+    --primary-text: #080809;
+    --secondary-text: #65686c;
+    --blue-link: #0064d1;
+
+    --primary-button-text: #fff;
+    --primary-button-background: var(--accent);
+    --primary-deemphasized-button-text: #0064d1;
+    --primary-deemphasized-button-background: #ebf5ff;
+    --secondary-button-text: #080809;
+    --secondary-button-background: #e2e5e9;
+
+    --web-wash: #f2f4f7;
+    --comment-background: #f0f2f5;
+    --card-background: #fff;
+
+    --hover-overlay: #0000000d;
+    --divider: #d0d3d7;
+}
+
+body,
+body * {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
 }
