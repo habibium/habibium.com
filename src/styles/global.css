@@ -19,6 +19,7 @@
     --divider: #65686c;
 }
 
+/* To avoid dark mode glitch for system wide light theme users */
 @media (prefers-color-scheme: light) {
     :root {
         --accent: #0866ff;
@@ -40,4 +41,25 @@
         --hover-overlay: #0000000d;
         --divider: #d0d3d7;
     }
+}
+
+:root[data-theme="light"] {
+    --accent: #0866ff;
+    --primary-text: #080809;
+    --secondary-text: #65686c;
+    --blue-link: #0064d1;
+
+    --primary-button-text: #fff;
+    --primary-button-background: var(--accent);
+    --primary-deemphasized-button-text: #0064d1;
+    --primary-deemphasized-button-background: #ebf5ff;
+    --secondary-button-text: #080809;
+    --secondary-button-background: #e2e5e9;
+
+    --web-wash: #f2f4f7;
+    --comment-background: #f0f2f5;
+    --card-background: #fff;
+
+    --hover-overlay: #0000000d;
+    --divider: #d0d3d7;
 }
