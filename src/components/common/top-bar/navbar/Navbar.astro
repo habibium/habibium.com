@@ -1,0 +1,38 @@
+---
+import Divider from "@/components/common/Divider.astro";
+
+const navItems = [
+    { name: "About", link: "/" },
+    { name: "Experience", link: "/experience" },
+    { name: "Projects", link: "/projects" },
+    { name: "Blog", link: "/blog" },
+];
+---
+
+<nav>
+    <ul class="flex">
+        {
+            navItems.map((item) => (
+                <a href={item.link}>
+                    <li class="rounded-md px-4 font-semibold text-secondary-text hover:bg-card-background">
+                        {item.name}
+                    </li>
+                    <Divider data-divider class="h-[3px] bg-transparent" />
+                </a>
+            ))
+        }
+    </ul>
+</nav>
+
+<script>
+    const navLinks = document.querySelectorAll("nav a") as NodeListOf<HTMLAnchorElement>;
+    if (navLinks.length > 0) {
+        const currentPath = location.pathname === "/" ? "/" : location.pathname.replace(/\/$/, "");
+        navLinks.forEach((link) => {
+            const li = link.querySelector("li");
+            const linkPath = link.getAttribute("href")?.replace(/\/$/, "") || "/";
+            if (currentPath === linkPath || (linkPath !== "/" && currentPath.startsWith(linkPath)))
+                li?.classList.replace("text-secondary-text", "text-accent");
+        });
+    }
+</script>

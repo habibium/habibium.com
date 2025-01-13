@@ -1,0 +1,21 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import Layout from "@/layouts/Layout.astro";
+
+export const blogParams = [
+    { params: { blog: "clifford" } },
+    { params: { blog: "rover" } },
+    { params: { blog: "spot" } },
+];
+export function getStaticPaths() {
+    return blogParams;
+}
+
+const { blog } = Astro.params;
+---
+
+<Layout>
+    <BlogLayout>
+        <h1>{blog}</h1>
+    </BlogLayout>
+</Layout>

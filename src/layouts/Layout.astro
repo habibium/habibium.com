@@ -1,5 +1,6 @@
 ---
 import Footer from "@/components/common/footer/Footer.astro";
+import TopBar from "@/components/common/top-bar/TopBar.astro";
 import "@/styles/global.css";
 ---
 
@@ -16,7 +17,11 @@ import "@/styles/global.css";
         <link rel="manifest" href="/site.webmanifest" />
         <title>Habibium</title>
     </head>
-    <body class="bg-web-wash text-primary-text">
+    <body class="bg-web-wash text-base text-primary-text">
+        <TopBar />
+        <main class="container mx-auto">
+            <slot />
+        </main>
         <Footer />
     </body>
 </html>
