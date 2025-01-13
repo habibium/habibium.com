@@ -67,6 +67,12 @@ export default {
                     "monospace",
                 ],
             },
+            fontSize: {
+                sm: "var(--font-size-sm)",
+                base: "var(--font-size-base)",
+                lg: "var(--font-size-lg)",
+                "3xl": "var(--font-size-3xl)",
+            },
         },
     },
     plugins: [],
