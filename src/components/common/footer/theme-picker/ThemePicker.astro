@@ -4,7 +4,7 @@ import { themeOptions } from "./script";
 
 <fieldset class="relative flex max-w-96 gap-2">
     <legend class="contents">
-        <span class="text-sm text-primary-text">Theme:</span>
+        <span class="grid place-items-center text-sm text-primary-text">Theme:</span>
     </legend>
     <div class="flex gap-1">
         {
@@ -12,7 +12,7 @@ import { themeOptions } from "./script";
                 <>
                     <input class="sr-only" name="theme" type="radio" id={o.value} value={o.value} />
                     <label
-                        class="flex h-6 cursor-pointer items-center justify-center rounded-18px px-3 text-xs font-medium text-secondary-text hover:bg-hover-overlay"
+                        class="flex h-6 cursor-pointer items-center justify-center rounded-18px px-3 text-sm font-medium text-secondary-text hover:bg-hover-overlay"
                         for={o.value}>
                         {o.label}
                     </label>
