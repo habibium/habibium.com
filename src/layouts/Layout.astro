@@ -1,6 +1,6 @@
 ---
 import Footer from "@/components/common/footer/Footer.astro";
-import TopBar from "@/components/common/top-bar/TopBar.astro";
+import Header from "@/components/common/header/Header.astro";
 import "@/styles/global.css";
 ---
 
@@ -20,7 +20,7 @@ import "@/styles/global.css";
         <script is:inline>let e=localStorage.getItem("theme");typeof e!="string"&&(e="system");document.documentElement.setAttribute("data-theme",e);</script>
     </head>
     <body class="bg-web-wash text-base text-primary-text">
-        <TopBar />
+        <Header />
         <main class="container mx-auto">
             <slot />
         </main>
