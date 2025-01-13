@@ -1,5 +1,9 @@
 ---
-import { themeOptions } from "./script";
+const themeOptions = [
+    { value: "light", label: "Light" },
+    { value: "dark", label: "Dark" },
+    { value: "system", label: "System" },
+];
 ---
 
 <fieldset class="relative flex max-w-96 gap-2">
@@ -23,9 +27,15 @@ import { themeOptions } from "./script";
 </fieldset>
 
 <script>
-    import { handleThemeChange, initTheme } from "./script";
-    initTheme();
-    handleThemeChange();
+    (document.querySelectorAll('input[name="theme"]') as NodeListOf<HTMLInputElement>).forEach((input) => {
+        if (input.value === document.documentElement.getAttribute("data-theme")) input.checked = true;
+
+        input.addEventListener("change", (e) => {
+            const theme = (e.target as HTMLInputElement).value;
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+        });
+    });
 </script>
 
 <style>

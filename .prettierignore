@@ -1,1 +1,4 @@
 pnpm-lock.yaml
+
+# Avoid formatting the minified JS in the root layout
+src/layouts/Layout.astro
