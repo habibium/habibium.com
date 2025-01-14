@@ -17,6 +17,11 @@
 
     --hover-overlay: #ffffff1a;
     --divider: #65686c;
+
+    --font-size-sm: 0.8125rem;
+    --font-size-base: 0.9375rem;
+    --font-size-lg: 1.0625rem;
+    --font-size-3xl: 2rem;
 }
 
 @media (prefers-color-scheme: light) {
@@ -84,9 +89,8 @@
     --divider: #d0d3d7;
 }
 
-body,
-body * {
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+* {
+    transition-property: background-color;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }

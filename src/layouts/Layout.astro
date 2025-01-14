@@ -1,5 +1,6 @@
 ---
-import Footer from "@/components/Footer.astro";
+import Footer from "@/components/common/footer/Footer.astro";
+import Header from "@/components/common/header/Header.astro";
 import "@/styles/global.css";
 ---
 
@@ -15,8 +16,14 @@ import "@/styles/global.css";
         <meta name="apple-mobile-web-app-title" content="Habibium" />
         <link rel="manifest" href="/site.webmanifest" />
         <title>Habibium</title>
+        {/* Set the theme attribute asap to avoid glitch */}
+        <script is:inline>let e=localStorage.getItem("theme");typeof e!="string"&&(e="system");document.documentElement.setAttribute("data-theme",e);</script>
     </head>
-    <body class="bg-web-wash text-primary-text">
+    <body class="bg-web-wash text-base text-primary-text">
+        <Header />
+        <main class="container mx-auto">
+            <slot />
+        </main>
         <Footer />
     </body>
 </html>

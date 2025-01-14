@@ -1,0 +1,41 @@
+---
+import { cn } from "@/lib/utils";
+
+const navItems = [
+    { name: "About", link: "/" },
+    { name: "Experience", link: "/experience" },
+    { name: "Projects", link: "/projects" },
+    { name: "Blog", link: "/blog" },
+];
+const normalizedPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (link: string) => link === normalizedPath || (link !== "/" && normalizedPath.startsWith(link));
+---
+
+<nav aria-label="Main navigation">
+    <ul class="flex h-[60px] items-center border-t border-divider">
+        {
+            navItems.map((item) => (
+                <li class="h-full">
+                    <a
+                        class="relative flex h-full items-center"
+                        href={item.link}
+                        aria-current={isActive(item.link) ? "page" : undefined}>
+                        <span
+                            class={cn(
+                                "grid h-[52px] place-items-center rounded-md px-4 font-semibold text-secondary-text",
+                                isActive(item.link) ? "text-blue-link" : "hover:bg-hover-overlay",
+                            )}>
+                            {item.name}
+                        </span>
+                        <div
+                            class={cn(
+                                "absolute inset-x-0 bottom-0 h-[3px] rounded-t-[1px] bg-transparent",
+                                isActive(item.link) && "bg-accent",
+                            )}
+                        />
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
