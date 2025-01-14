@@ -1,10 +1,14 @@
 ---
+import { cn } from "@/lib/utils";
+
 const navItems = [
     { name: "About", link: "/" },
     { name: "Experience", link: "/experience" },
     { name: "Projects", link: "/projects" },
     { name: "Blog", link: "/blog" },
 ];
+const normalizedPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (link: string) => link === normalizedPath || (link !== "/" && normalizedPath.startsWith(link));
 ---
 
 <nav aria-label="Main navigation">
@@ -15,39 +19,23 @@ const navItems = [
                     <a
                         class="relative flex h-full items-center"
                         href={item.link}
-                        aria-current={Astro.url.pathname === item.link ? "page" : undefined}>
-                        <span class="grid h-[52px] place-items-center rounded-md px-4 font-semibold text-secondary-text hover:bg-hover-overlay">
+                        aria-current={isActive(item.link) ? "page" : undefined}>
+                        <span
+                            class={cn(
+                                "grid h-[52px] place-items-center rounded-md px-4 font-semibold text-secondary-text",
+                                isActive(item.link) ? "text-blue-link" : "hover:bg-hover-overlay",
+                            )}>
                             {item.name}
                         </span>
-                        <div class="absolute inset-x-0 bottom-0 h-[3px] rounded-t-[1px] bg-transparent" />
+                        <div
+                            class={cn(
+                                "absolute inset-x-0 bottom-0 h-[3px] rounded-t-[1px] bg-transparent",
+                                isActive(item.link) && "bg-accent",
+                            )}
+                        />
                     </a>
                 </li>
             ))
         }
     </ul>
 </nav>
-
-<script>
-    function setActiveNavLink() {
-        const navLinks = document.querySelectorAll("nav a") as NodeListOf<HTMLAnchorElement>;
-        if (!navLinks.length) return;
-
-        const currentPath = location.pathname === "/" ? "/" : location.pathname.replace(/\/$/, "");
-
-        navLinks.forEach((link) => {
-            const linkPath = link.getAttribute("href")?.replace(/\/$/, "") || "/";
-            const isActive = currentPath === linkPath || (linkPath !== "/" && currentPath.startsWith(linkPath));
-
-            if (isActive) {
-                const textElement = link.querySelector("span");
-                const indicator = link.querySelector("div");
-
-                textElement?.classList.remove("text-secondary-text", "hover:bg-hover-overlay");
-                textElement?.classList.add("text-blue-link");
-                indicator?.classList.replace("bg-transparent", "bg-accent");
-            }
-        });
-    }
-
-    setActiveNavLink();
-</script>
