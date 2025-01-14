@@ -1,6 +1,4 @@
 ---
-import Divider from "@/components/common/Divider.astro";
-
 const navItems = [
     { name: "About", link: "/" },
     { name: "Experience", link: "/experience" },
@@ -9,30 +7,47 @@ const navItems = [
 ];
 ---
 
-<nav>
-    <ul class="flex">
+<nav aria-label="Main navigation">
+    <ul class="flex h-[60px] items-center border-t border-divider">
         {
             navItems.map((item) => (
-                <a href={item.link}>
-                    <li class="rounded-md px-4 font-semibold text-secondary-text hover:bg-card-background">
-                        {item.name}
-                    </li>
-                    <Divider data-divider class="h-[3px] bg-transparent" />
-                </a>
+                <li class="h-full">
+                    <a
+                        class="relative flex h-full items-center"
+                        href={item.link}
+                        aria-current={Astro.url.pathname === item.link ? "page" : undefined}>
+                        <span class="grid h-[52px] place-items-center rounded-md px-4 font-semibold text-secondary-text hover:bg-hover-overlay">
+                            {item.name}
+                        </span>
+                        <div class="absolute inset-x-0 bottom-0 h-[3px] rounded-t-[1px] bg-transparent" />
+                    </a>
+                </li>
             ))
         }
     </ul>
 </nav>
 
 <script>
-    const navLinks = document.querySelectorAll("nav a") as NodeListOf<HTMLAnchorElement>;
-    if (navLinks.length > 0) {
+    function setActiveNavLink() {
+        const navLinks = document.querySelectorAll("nav a") as NodeListOf<HTMLAnchorElement>;
+        if (!navLinks.length) return;
+
         const currentPath = location.pathname === "/" ? "/" : location.pathname.replace(/\/$/, "");
+
         navLinks.forEach((link) => {
-            const li = link.querySelector("li");
             const linkPath = link.getAttribute("href")?.replace(/\/$/, "") || "/";
-            if (currentPath === linkPath || (linkPath !== "/" && currentPath.startsWith(linkPath)))
-                li?.classList.replace("text-secondary-text", "text-accent");
+            const isActive = currentPath === linkPath || (linkPath !== "/" && currentPath.startsWith(linkPath));
+
+            if (isActive) {
+                const textElement = link.querySelector("span");
+                const indicator = link.querySelector("div");
+
+                textElement?.classList.remove("text-secondary-text", "hover:bg-hover-overlay");
+                textElement?.classList.add("text-blue-link");
+                indicator?.classList.replace("bg-transparent", "bg-accent");
+            }
         });
     }
+
+    setActiveNavLink();
 </script>
